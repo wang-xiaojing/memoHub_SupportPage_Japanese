@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New メモ作成モード - 操作方法 | MemoHub</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f7;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #007AFF;
+            text-align: center;
+            border-bottom: 3px solid #007AFF;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+        h2 {
+            color: #34C759;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            padding-left: 10px;
+            border-left: 4px solid #34C759;
+        }
+        h3 {
+            color: #FF9500;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        .feature-section {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 4px solid #007AFF;
+        }
+        .button-info {
+            background-color: #e3f2fd;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+            border-left: 4px solid #2196f3;
+        }
+        .warning {
+            background-color: #fff3cd;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #ffc107;
+            margin: 15px 0;
+        }
+        .success {
+            background-color: #d4edda;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #28a745;
+            margin: 15px 0;
+        }
+        .info {
+            background-color: #d1ecf1;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #17a2b8;
+            margin: 15px 0;
+        }
+        ul, ol {
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 8px;
+        }
+        .icon {
+            font-weight: bold;
+            color: #007AFF;
+        }
+        code {
+            background-color: #f1f3f4;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+        .component-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+            margin: 15px 0;
+        }
+        .component-item {
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 6px;
+            border: 1px solid #e0e0e0;
+            text-align: center;
+        }
+        .step-number {
+            background-color: #007AFF;
+            color: white;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        .back-button {
+            display: inline-block;
+            background-color: #007AFF;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-bottom: 20px;
+            transition: background-color 0.3s ease;
+        }
+        .back-button:hover {
+            background-color: #0056b3;
+        }
+        .back-button::before {
+            content: "← ";
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-button">メイン操作ガイドに戻る</a>
+        
+        <h1>📝 New - 新しいメモ作成モード</h1>
+        
+        <div class="feature-section">
+            <h2>🎯 Newモードの概要</h2>
+            <p>Newモードは新しいメモを作成するための画面です。テキスト入力から音声録音、写真撮影、位置情報の記録まで、さまざまなコンテンツを含むリッチなメモを作成できます。</p>
+        </div>
+
+        <h2>📋 画面構成</h2>
+        
+        <div class="info">
+            <h3>上部エリア</h3>
+            <ul>
+                <li><strong>MemoTopView</strong> - メモのタイトルと基本情報</li>
+                <li><strong>ScheduleBarView</strong> - アラーム設定とスケジュール管理</li>
+            </ul>
+        </div>
+
+        <div class="info">
+            <h3>メインエリア</h3>
+            <ul>
+                <li><strong>タグ選択エリア</strong> - メモのカテゴリー分類</li>
+                <li><strong>テキストエディタ</strong> - メインコンテンツの入力</li>
+                <li><strong>追加機能ボタンバー</strong> - メディア・音声・位置情報の追加</li>
+                <li><strong>詳細情報表示</strong> - 追加したコンテンツの一覧</li>
+            </ul>
+        </div>
+
+        <h2>🔖 タグ機能</h2>
+        
+        <div class="button-info">
+            <p><span class="step-number">1</span><strong>TAGsボタン</strong>をタップ</p>
+            <ul>
+                <li>タグ選択画面が表示されます</li>
+                <li>複数のタグから選択可能</li>
+                <li>メモを分類・整理するために使用</li>
+            </ul>
+        </div>
+
+        <div class="button-info">
+            <p><span class="step-number">2</span><strong>タグバー</strong>で確認</p>
+            <ul>
+                <li>選択したタグが右側に表示されます</li>
+                <li>タグの色とアイコンで視覚的に識別</li>
+            </ul>
+        </div>
+
+        <h2>✍️ テキスト入力機能</h2>
+        
+        <div class="feature-section">
+            <h3>基本的なテキスト入力</h3>
+            <div class="component-list">
+                <div class="component-item">
+                    <p><span class="icon">📝</span></p>
+                    <strong>メインテキスト</strong>
+                    <p>自由なテキスト入力</p>
+                </div>
+                <div class="component-item">
+                    <p><span class="icon">🎨</span></p>
+                    <strong>フォーマット</strong>
+                    <p>文字揃え・スタイル設定</p>
+                </div>
+                <div class="component-item">
+                    <p><span class="icon">📐</span></p>
+                    <strong>サイズ調整</strong>
+                    <p>Expand/Collapseボタン</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="button-info">
+            <p><span class="icon">🎨</span> <strong>テキストフォーマット機能</strong></p>
+            <ul>
+                <li><strong>文字揃え</strong> - 左寄せ、中央、右寄せ</li>
+                <li><strong>フォント設定</strong> - サイズ、スタイル、色の変更</li>
+                <li><strong>背景色設定</strong> - テキストエディタの背景色変更</li>
+            </ul>
+        </div>
+
+        <div class="success">
+            <p><span class="icon">📏</span> <strong>エディタサイズ調整</strong></p>
+            <ul>
+                <li><strong>Expandボタン</strong> - テキストエディタを拡大</li>
+                <li><strong>Collapseボタン</strong> - テキストエディタを縮小</li>
+                <li>長文入力時に便利な機能</li>
+            </ul>
+        </div>
+
+        <h2>🎛️ 追加機能ボタンバー</h2>
+        
+        <div class="component-list">
+            <div class="component-item">
+                <p><span class="icon">📸</span></p>
+                <strong>カメラ</strong>
+                <p>写真を撮影</p>
+            </div>
+            <div class="component-item">
+                <p><span class="icon">🎥</span></p>
+                <strong>ビデオ</strong>
+                <p>動画を録画</p>
+            </div>
+            <div class="component-item">
+                <p><span class="icon">🖼️</span></p>
+                <strong>フォトライブラリ</strong>
+                <p>既存の写真・動画を選択</p>
+            </div>
+            <div class="component-item">
+                <p><span class="icon">🎤</span></p>
+                <strong>音声録音</strong>
+                <p>音声メモを録音</p>
+            </div>
+            <div class="component-item">
+                <p><span class="icon">📍</span></p>
+                <strong>位置情報</strong>
+                <p>現在地や指定地点を記録</p>
+            </div>
+        </div>
+
+        <h2>📸 メディア機能の使い方</h2>
+        
+        <div class="feature-section">
+            <h3>カメラ機能</h3>
+            <div class="button-info">
+                <p><span class="step-number">1</span>カメラボタンをタップ</p>
+                <p><span class="step-number">2</span>カメラ画面で撮影</p>
+                <p><span class="step-number">3</span>撮影した画像がメモに追加される</p>
+            </div>
+        </div>
+
+        <div class="feature-section">
+            <h3>ビデオ機能</h3>
+            <div class="button-info">
+                <p><span class="step-number">1</span>ビデオボタンをタップ</p>
+                <p><span class="step-number">2</span>ビデオカメラで録画</p>
+                <p><span class="step-number">3</span>サムネイル付きでメモに追加される</p>
+            </div>
+        </div>
+
+        <div class="feature-section">
+            <h3>フォトライブラリ</h3>
+            <div class="button-info">
+                <p><span class="step-number">1</span>フォトライブラリボタンをタップ</p>
+                <p><span class="step-number">2</span>写真・動画を選択</p>
+                <p><span class="step-number">3</span>複数選択も可能</p>
+            </div>
+        </div>
+
+        <h2>🎤 音声録音機能</h2>
+        
+        <div class="feature-section">
+            <h3>録音の手順</h3>
+            <div class="button-info">
+                <p><span class="step-number">1</span>音声録音ボタンをタップ</p>
+                <p><span class="step-number">2</span>録音画面（CapturedAudioView）が表示</p>
+                <p><span class="step-number">3</span>録音開始・一時停止・停止の操作</p>
+                <p><span class="step-number">4</span>音声波形をリアルタイム表示</p>
+                <p><span class="step-number">5</span>録音完了後、メモに自動保存</p>
+            </div>
+        </div>
+
+        <div class="warning">
+            <p><strong>⚠️ 録音時の注意</strong></p>
+            <ul>
+                <li>録音中は他の機能が制限されます</li>
+                <li>録音を完了してから他の操作を行ってください</li>
+                <li>音声データは自動的にメモアイテムに保存されます</li>
+            </ul>
+        </div>
+
+        <h2>📍 位置情報機能</h2>
+        
+        <div class="feature-section">
+            <h3>地図機能の使い方</h3>
+            <div class="button-info">
+                <p><span class="step-number">1</span>位置情報ボタンをタップ</p>
+                <p><span class="step-number">2</span>地図画面（MapViewWrapsView）が表示</p>
+                <p><span class="step-number">3</span>現在地または任意の地点を選択</p>
+                <p><span class="step-number">4</span>地点情報がメモに追加される</p>
+            </div>
+        </div>
+
+        <div class="info">
+            <p><strong>🗺️ 地図編集機能</strong></p>
+            <ul>
+                <li>複数の地点を登録可能</li>
+                <li>登録済み地点の編集・削除</li>
+                <li>地点ごとにタグ付け可能</li>
+            </ul>
+        </div>
+
+        <h2>📊 詳細情報表示エリア</h2>
+        
+        <div class="feature-section">
+            <h3>追加したコンテンツの管理</h3>
+            <ul>
+                <li><strong>メディアコンテンツ</strong> - 写真・動画の一覧表示</li>
+                <li><strong>音声録音</strong> - 録音ファイルの一覧と再生</li>
+                <li><strong>位置情報</strong> - 登録した地点の一覧</li>
+                <li><strong>統計情報</strong> - 各コンテンツの件数表示</li>
+            </ul>
+        </div>
+
+        <h2>⏰ スケジュール・アラーム機能</h2>
+        
+        <div class="feature-section">
+            <h3>ScheduleBarViewでの設定</h3>
+            <div class="button-info">
+                <ul>
+                    <li><strong>アラーム設定</strong> - メモに通知を設定</li>
+                    <li><strong>開始・終了時間</strong> - 期間指定のメモ</li>
+                    <li><strong>日付指定</strong> - 特定の日時にメモを関連付け</li>
+                    <li><strong>通知管理</strong> - 設定した通知の一覧表示</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2>💾 保存とデータ管理</h2>
+        
+        <div class="success">
+            <h3>自動保存機能</h3>
+            <ul>
+                <li>テキスト入力は自動的に保存されます</li>
+                <li>メディアファイルは追加と同時に保存</li>
+                <li>音声録音は録音完了時に自動保存</li>
+                <li>位置情報は選択時に即座に保存</li>
+            </ul>
+        </div>
+
+        <div class="info">
+            <h3>Core Dataとの連携</h3>
+            <ul>
+                <li>すべてのデータはCore Dataで管理</li>
+                <li>複雑なデータ型の自動変換</li>
+                <li>メモアイテムの完全な状態保持</li>
+            </ul>
+        </div>
+
+        <h2>🎨 カスタマイズ機能</h2>
+        
+        <div class="feature-section">
+            <h3>外観のカスタマイズ</h3>
+            <div class="component-list">
+                <div class="component-item">
+                    <span class="icon">🎨</span> 背景色<br>
+                    <small>テキストエディタの背景色変更</small>
+                </div>
+                <div class="component-item">
+                    <span class="icon">📝</span> フォント<br>
+                    <small>文字のサイズ・スタイル</small>
+                </div>
+                <div class="component-item">
+                    <span class="icon">📐</span> レイアウト<br>
+                    <small>エディタサイズの調整</small>
+                </div>
+            </div>
+        </div>
+
+        <h2>🔧 便利な操作方法</h2>
+        
+        <div class="success">
+            <h3>💡 効率的な使い方のコツ</h3>
+            <ul>
+                <li><strong>タグの活用</strong> - メモを分類して後で検索しやすく</li>
+                <li><strong>メディア機能の組み合わせ</strong> - テキスト＋写真＋音声で豊富な情報</li>
+                <li><strong>位置情報の記録</strong> - 会議場所や訪問先を記録</li>
+                <li><strong>アラーム設定</strong> - 重要なタスクの通知設定</li>
+                <li><strong>エディタサイズ調整</strong> - 長文入力時はExpandを活用</li>
+            </ul>
+        </div>
+
+        <div class="warning">
+            <h3>⚠️ 注意事項</h3>
+            <ul>
+                <li>音声録音中は他の機能が制限されます</li>
+                <li>カメラ・フォトライブラリ使用時は適切な権限が必要</li>
+                <li>位置情報機能は位置情報アクセス権限が必要</li>
+                <li>大量のメディアファイルはストレージ容量に注意</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

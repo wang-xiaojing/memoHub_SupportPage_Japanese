@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TopPage 操作方法 - MemoHub</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f7;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #007AFF;
+            text-align: center;
+            border-bottom: 3px solid #007AFF;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+        h2 {
+            color: #34C759;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            padding-left: 10px;
+            border-left: 4px solid #34C759;
+        }
+        h3 {
+            color: #FF9500;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        .feature-section {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 4px solid #007AFF;
+        }
+        .button-info {
+            background-color: #e3f2fd;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+            border-left: 4px solid #2196f3;
+        }
+        .warning {
+            background-color: #fff3cd;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #ffc107;
+            margin: 15px 0;
+        }
+        .success {
+            background-color: #d4edda;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #28a745;
+            margin: 15px 0;
+        }
+        ul, ol {
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 8px;
+        }
+        .icon {
+            font-weight: bold;
+            color: #007AFF;
+        }
+        code {
+            background-color: #f1f3f4;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+        .component-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+            margin: 15px 0;
+        }
+        .component-item {
+            background-color: #fff;
+            padding: 10px;
+            border-radius: 6px;
+            border: 1px solid #e0e0e0;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📱 MemoHub - 操作方法</h1>
+        
+        <div class="feature-section">
+            <h2>🏠 メイン画面の概要</h2>
+            <p>TopPageはMemoHubアプリのメイン画面です。メモの作成、編集、表示、検索など、すべての機能にアクセスできます。</p>
+        </div>
+
+        <h2>🔧 ナビゲーションバー</h2>
+        
+        <h3>左上：メニューボタン</h3>
+        <div class="button-info">
+            <p><span class="icon">≡</span> <strong>メニューボタン</strong></p>
+            <ul>
+                <li>タップするとサイドメニューが表示されます</li>
+                <li>メモコンポーネント（機能）の選択ができます</li>
+                <li>右スワイプでもメニューを開けます</li>
+            </ul>
+        </div>
+
+        <h3>右上：検索ボタン</h3>
+        <div class="button-info">
+            <p><span class="icon">🔍</span> <strong>検索ボタン</strong></p>
+            <ul>
+                <li>メモの検索画面を表示します</li>
+                <li>タイトルと内容での検索が可能</li>
+                <li>タグによる絞り込み検索もできます</li>
+            </ul>
+            <div class="warning">
+                <strong>⚠️ 注意：</strong>編集中のメモに未保存の変更がある場合、確認ダイアログが表示されます。
+            </div>
+        </div>
+
+        <h2>⬇️ 下部ツールバー</h2>
+        
+        <div class="component-list">
+            <div class="component-item">
+                <p><span class="icon">📝</span></p>
+                <strong><a href="Support_New_Japaness.html" style="color: #007AFF; text-decoration: none;">New</a></strong>
+                <p>新しいメモを作成</p>
+            </div>
+            <div class="component-item">
+                <p><span class="icon">📋</span></p>
+                <strong>List</strong>
+                <p>メモ一覧を表示</p>
+            </div>
+            <div class="component-item">
+                <p><span class="icon">📅</span></p>
+                <strong>Calendar</strong>
+                <p>カレンダー表示</p>
+            </div>
+            <div class="component-item">
+                <p><span class="icon">⚙️</span></p>
+                <strong>Settings</strong>
+                <p>設定画面を表示</p>
+            </div>
+        </div>
+
+        <div class="warning">
+            <strong>⚠️ データ保護機能：</strong>編集中のメモに未保存の変更がある場合、他の画面に移動する前に確認ダイアログが表示されます。
+        </div>
+
+        <h2>🎛️ メモコンポーネント</h2>
+        
+        <div class="feature-section">
+            <h3>基本コンポーネント（デフォルトで有効）</h3>
+            <div class="component-list">
+                <div class="component-item">
+                    <span class="icon">📄</span> Text<br>
+                    <small>テキストメモ</small>
+                </div>
+                <div class="component-item">
+                    <span class="icon">📅</span> Date<br>
+                    <small>日付メモ</small>
+                </div>
+                <div class="component-item">
+                    <span class="icon">⏰</span> Time<br>
+                    <small>時間メモ</small>
+                </div>
+                <div class="component-item">
+                    <span class="icon">🔔</span> Alarm<br>
+                    <small>アラームメモ</small>
+                </div>
+                <div class="component-item">
+                    <span class="icon">📺</span> Visual Content<br>
+                    <small>画像・動画</small>
+                </div>
+                <div class="component-item">
+                    <span class="icon">🎤</span> Voice Rec.<br>
+                    <small>音声録音</small>
+                </div>
+                <div class="component-item">
+                    <span class="icon">🌍</span> Location<br>
+                    <small>位置情報</small>
+                </div>
+                <div class="component-item">
+                    <span class="icon">📸</span> Camera<br>
+                    <small>カメラ</small>
+                </div>
+                <div class="component-item">
+                    <span class="icon">🎥</span> Video<br>
+                    <small>ビデオ</small>
+                </div>
+            </div>
+        </div>
+
+        <h2>🔄 画面切り替え</h2>
+        
+        <div class="success">
+            <h3>利用可能な画面</h3>
+            <ul>
+                <li><strong>New</strong> - 新規メモ作成画面</li>
+                <li><strong>NewSpecifiedDate</strong> - 指定日時での新規メモ作成</li>
+                <li><strong>Edit</strong> - メモ編集画面</li>
+                <li><strong>List</strong> - メモ一覧表示</li>
+                <li><strong>ListSearchMemoItems</strong> - 検索結果一覧</li>
+                <li><strong>CalendarYear</strong> - 年間カレンダー表示</li>
+                <li><strong>CalendarMonth</strong> - 月間カレンダー表示</li>
+                <li><strong>Settings</strong> - 設定画面</li>
+            </ul>
+        </div>
+
+        <h2>📲 通知機能</h2>
+        
+        <div class="feature-section">
+            <h3>アラーム・通知管理</h3>
+            <ul>
+                <li>アプリ起動時に通知許可を自動要求</li>
+                <li>0.5秒ごとに通知リストを更新</li>
+                <li>期限切れの通知を自動削除</li>
+                <li>カレンダーベースの通知をサポート</li>
+            </ul>
+        </div>
+
+        <h2>💾 データ管理</h2>
+        
+        <div class="feature-section">
+            <h3>自動データ同期</h3>
+            <ul>
+                <li>Core Dataからメモアイテムを自動読み込み</li>
+                <li>タグ情報の自動同期</li>
+                <li>コンポーネント設定の保存・復元</li>
+                <li>複雑なデータ型（音声、画像、位置情報）の変換処理</li>
+            </ul>
+        </div>
+
+        <h2>🎨 インターフェース</h2>
+        
+        <div class="feature-section">
+            <h3>ユーザビリティ</h3>
+            <ul>
+                <li>画面ごとに最適化された背景色</li>
+                <li>スワイプジェスチャーによるメニュー操作</li>
+                <li>音声録音中の機能制限（UI保護）</li>
+                <li>未保存データの警告システム</li>
+                <li>アニメーション効果によるスムーズな画面遷移</li>
+            </ul>
+        </div>
+
+        <div class="success">
+            <h3>💡 使用のコツ</h3>
+            <ul>
+                <li>メニューは右スワイプでも開けます</li>
+                <li>各コンポーネントは設定画面で有効/無効を切り替えできます</li>
+                <li>検索機能は複数の条件を組み合わせて使用できます</li>
+                <li>音声録音中は他の操作が制限されるため、録音完了後に他の作業を行ってください</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
