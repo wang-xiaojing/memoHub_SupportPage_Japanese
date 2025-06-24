@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendar カレンダー表示モード - 操作方法 | MemoHub</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f7;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #007AFF;
+            text-align: center;
+            border-bottom: 3px solid #007AFF;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+        h2 {
+            color: #34C759;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            padding-left: 10px;
+            border-left: 4px solid #34C759;
+        }
+        h3 {
+            color: #FF9500;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        .feature-section {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 4px solid #007AFF;
+        }
+        .button-info {
+            background-color: #e3f2fd;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+            border-left: 4px solid #2196f3;
+        }
+        .warning {
+            background-color: #fff3cd;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #ffc107;
+            margin: 15px 0;
+        }
+        .success {
+            background-color: #d4edda;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #28a745;
+            margin: 15px 0;
+        }
+        .info {
+            background-color: #d1ecf1;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #17a2b8;
+            margin: 15px 0;
+        }
+        ul, ol {
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 8px;
+        }
+        .icon {
+            font-weight: bold;
+            color: #007AFF;
+        }
+        code {
+            background-color: #f1f3f4;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+        .component-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+            margin: 15px 0;
+        }
+        .component-item {
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 6px;
+            border: 1px solid #e0e0e0;
+            text-align: center;
+        }
+        .step-number {
+            background-color: #007AFF;
+            color: white;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        .back-button {
+            display: inline-block;
+            background-color: #007AFF;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-bottom: 20px;
+            transition: background-color 0.3s ease;
+        }
+        .back-button:hover {
+            background-color: #0056b3;
+        }
+        .back-button::before {
+            content: "← ";
+            margin-right: 5px;
+        }
+        .gesture-demo {
+            background-color: #f0f8ff;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #007AFF;
+            margin: 15px 0;
+        }
+        .calendar-legend {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid #6c757d;
+        }
+        .navigation-control {
+            background-color: #e8f5e8;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+            border-left: 4px solid #4CAF50;
+        }
+        .month-grid {
+            background-color: #fff5f5;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid #ff6b6b;
+        }
+        .stats-info {
+            background-color: #f0f0f8;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid #9c27b0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-button">メイン操作ガイドに戻る</a>
+        
+        <h1>📅 Calendar - カレンダー表示モード</h1>
+        
+        <div class="feature-section">
+            <h2>🎯 Calendarモードの概要</h2>
+            <p>Calendarモードは年間カレンダー形式でメモを視覚的に表示し、日付ベースでメモを管理するための画面です。メモがある日付を一目で確認でき、月単位での詳細表示に移行することができます。</p>
+        </div>
+
+        <h2>📋 画面構成</h2>
+        
+        <div class="info">
+            <h3>ヘッダーエリア</h3>
+            <ul>
+                <li><strong>年表示</strong> - 現在表示中の年を大きく表示</li>
+                <li><strong>ナビゲーションボタン</strong> - 年の移動とToday機能</li>
+                <li><strong>統計情報</strong> - メモ件数と通知件数の表示</li>
+            </ul>
+        </div>
+
+        <div class="info">
+            <h3>カレンダーグリッドエリア</h3>
+            <ul>
+                <li><strong>12ヶ月表示</strong> - 1年間の月を3×4のグリッドで表示</li>
+                <li><strong>各月のミニカレンダー</strong> - 日付とメモ有無の視覚表示</li>
+                <li><strong>ツールバー</strong> - 新規作成ボタン</li>
+            </ul>
+        </div>
+
+        <h2>🎛️ ナビゲーション機能</h2>
+        
+        <div class="navigation-control">
+            <h3>年移動コントロール</h3>
+            <div class="component-list">
+                <div class="component-item">
+                    <p><span class="icon">◀️</span></p>
+                    <strong>前年ボタン</strong>
+                    <p>前の年に移動</p>
+                </div>
+                <div class="component-item">
+                    <p><span class="icon">🏠</span></p>
+                    <strong>Todayボタン</strong>
+                    <p>現在の年に戻る</p>
+                </div>
+                <div class="component-item">
+                    <p><span class="icon">▶️</span></p>
+                    <strong>翌年ボタン</strong>
+                    <p>次の年に移動</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="gesture-demo">
+            <h3>スワイプジェスチャー操作</h3>
+            <div class="button-info">
+                <p><span class="step-number">1</span><strong>左スワイプ</strong> - 翌年に移動</p>
+                <ul>
+                    <li>画面を左にスワイプすると次の年が表示</li>
+                    <li>スムーズなアニメーション付き</li>
+                </ul>
+            </div>
+            
+            <div class="button-info">
+                <p><span class="step-number">2</span><strong>右スワイプ</strong> - 前年に移動</p>
+                <ul>
+                    <li>画面を右にスワイプすると前の年が表示</li>
+                    <li>直感的な操作でカレンダーをナビゲート</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2>📊 統計情報表示</h2>
+        
+        <div class="stats-info">
+            <h3>表示年の統計データ</h3>
+            <div class="button-info">
+                <p><span class="icon">📝</span> <strong>メモ件数</strong></p>
+                <ul>
+                    <li>表示中の年に作成されたメモの総数</li>
+                    <li>リアルタイムで更新される件数表示</li>
+                    <li>年の変更に応じて自動計算</li>
+                </ul>
+            </div>
+            
+            <div class="button-info">
+                <p><span class="icon">🔔</span> <strong>通知件数</strong></p>
+                <ul>
+                    <li>表示中の年に設定された通知の総数</li>
+                    <li>UNCalendarNotificationTriggerベースの通知をカウント</li>
+                    <li>スケジュールされた通知の可視化</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2>📅 月間カレンダーグリッド</h2>
+        
+        <div class="month-grid">
+            <h3>12ヶ月表示レイアウト</h3>
+            <div class="feature-section">
+                <h4>グリッド構成</h4>
+                <ul>
+                    <li><strong>3×4レイアウト</strong> - 3列、4行で12ヶ月を配置</li>
+                    <li><strong>月名表示</strong> - 多言語対応（日本語：○月、英語：Month名）</li>
+                    <li><strong>現在月のハイライト</strong> - 今月は赤色で強調表示</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="month-grid">
+            <h3>各月のミニカレンダー機能</h3>
+            <div class="component-list">
+                <div class="component-item">
+                    <p><span class="icon">📆</span></p>
+                    <strong>日付表示</strong>
+                    <p>6週×7日の標準カレンダー</p>
+                </div>
+                <div class="component-item">
+                    <p><span class="icon">🟡</span></p>
+                    <strong>メモ日ハイライト</strong>
+                    <p>メモがある日は黄色背景</p>
+                </div>
+                <div class="component-item">
+                    <p><span class="icon">🔴</span></p>
+                    <strong>今日マーカー</strong>
+                    <p>今日の日付は赤色背景</p>
+                </div>
+            </div>
+        </div>
+
+        <h2>🎨 カレンダー表示の詳細</h2>
+        
+        <div class="calendar-legend">
+            <h3>日付表示の色分け</h3>
+            <div class="button-info">
+                <p><span class="icon">🗓️</span> <strong>曜日による色分け</strong></p>
+                <ul>
+                    <li><strong>日曜日</strong> - 赤色で表示</li>
+                    <li><strong>土曜日</strong> - 青色で表示</li>
+                    <li><strong>平日</strong> - 通常の黒色で表示</li>
+                </ul>
+            </div>
+            
+            <div class="button-info">
+                <p><span class="icon">⭐</span> <strong>特別な日の表示</strong></p>
+                <ul>
+                    <li><strong>今日</strong> - 赤い背景に白文字</li>
+                    <li><strong>メモありの日</strong> - 黄色の背景に赤文字</li>
+                    <li><strong>今日＋メモあり</strong> - 黄色背景＋赤い枠線</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2>👆 操作方法</h2>
+        
+        <div class="feature-section">
+            <h3>基本操作</h3>
+            <div class="button-info">
+                <p><span class="step-number">1</span><strong>月のタップ</strong></p>
+                <ul>
+                    <li>任意の月をタップすると月表示モードに切り替え</li>
+                    <li>selection = "CalendarMonth"に変更</li>
+                    <li>selectedDateが選択した月の1日に設定</li>
+                </ul>
+            </div>
+            
+            <div class="button-info">
+                <p><span class="step-number">2</span><strong>年移動ボタン</strong></p>
+                <ul>
+                    <li>左矢印（◀️）- 前年に移動</li>
+                    <li>右矢印（▶️）- 翌年に移動</li>
+                    <li>withAnimation付きでスムーズに移動</li>
+                </ul>
+            </div>
+            
+            <div class="button-info">
+                <p><span class="step-number">3</span><strong>Todayボタン</strong></p>
+                <ul>
+                    <li>赤い「Today」ボタンをタップ</li>
+                    <li>現在の年月に即座に戻る</li>
+                    <li>長期間移動した後の復帰に便利</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2>🔧 ツールバー機能</h2>
+        
+        <div class="navigation-control">
+            <h3>新規作成機能</h3>
+            <div class="button-info">
+                <p><span class="step-number">1</span><strong>+ボタン</strong>をタップ</p>
+                <ul>
+                    <li>右上の赤い「+」ボタンでメモ作成</li>
+                    <li>「New」モードに自動切り替え</li>
+                    <li>新しいメモの作成画面が表示</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2>🔄 自動更新機能</h2>
+        
+        <div class="feature-section">
+            <h3>リアルタイムデータ更新</h3>
+            <div class="success">
+                <p><span class="icon">🔄</span> <strong>通知データの更新</strong></p>
+                <ul>
+                    <li><strong>画面表示時</strong> - 自動的に通知データを取得</li>
+                    <li><strong>プルリフレッシュ</strong> - 下にスワイプして手動更新</li>
+                    <li><strong>期限管理</strong> - 期限切れ通知の自動除外</li>
+                </ul>
+            </div>
+            
+            <div class="success">
+                <p><span class="icon">📊</span> <strong>統計情報の自動計算</strong></p>
+                <ul>
+                    <li>年変更時に自動でメモ件数を再計算</li>
+                    <li>通知件数も年に基づいて自動フィルタリング</li>
+                    <li>リアルタイムでの正確な数値表示</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2>🌍 多言語対応</h2>
+        
+        <div class="info">
+            <h3>ローカライゼーション機能</h3>
+            <div class="button-info">
+                <p><span class="icon">🌐</span> <strong>月名の多言語表示</strong></p>
+                <ul>
+                    <li><strong>日本語</strong> - 1月、2月、3月...12月</li>
+                    <li><strong>中国語</strong> - 1月、2月、3月...12月</li>
+                    <li><strong>英語</strong> - January、February、March...December</li>
+                    <li>デバイスの言語設定に自動対応</li>
+                </ul>
+            </div>
+            
+            <div class="button-info">
+                <p><span class="icon">📊</span> <strong>統計ラベルの多言語対応</strong></p>
+                <ul>
+                    <li>String(localized:)を使用した文字列ローカライゼーション</li>
+                    <li>「Memos」「Alert」ラベルの自動翻訳</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2>🎯 効率的な使い方</h2>
+        
+        <div class="success">
+            <h3>💡 活用のコツ</h3>
+            <ul>
+                <li><strong>年間概要の把握</strong> - 1年間のメモ分布を一目で確認</li>
+                <li><strong>月選択からの詳細表示</strong> - 気になる月をタップして詳細確認</li>
+                <li><strong>スワイプナビゲーション</strong> - 直感的な年移動操作</li>
+                <li><strong>統計情報活用</strong> - メモの作成頻度や通知設定状況の把握</li>
+                <li><strong>プルリフレッシュ</strong> - 最新の通知状況を随時確認</li>
+            </ul>
+        </div>
+
+        <div class="success">
+            <h3>🔍 視覚的なメモ確認</h3>
+            <ul>
+                <li><strong>黄色ハイライト</strong> - メモがある日付を素早く特定</li>
+                <li><strong>今日マーカー</strong> - 現在の日付を常に把握</li>
+                <li><strong>曜日色分け</strong> - 週末と平日の視覚的区別</li>
+            </ul>
+        </div>
+
+        <h2>🔗 他画面との連携</h2>
+        
+        <div class="info">
+            <h3>画面遷移</h3>
+            <ul>
+                <li><strong>月表示への移行</strong> - 月タップで「CalendarMonth」モードへ</li>
+                <li><strong>新規作成</strong> - +ボタンで「New」モードへ</li>
+                <li><strong>日付指定作成</strong> - 選択した月の新規メモ作成</li>
+            </ul>
+        </div>
+
+        <div class="warning">
+            <h3>⚠️ 注意事項</h3>
+            <ul>
+                <li><strong>通知権限</strong> - 正確な通知件数表示には通知許可が必要</li>
+                <li><strong>データ同期</strong> - Core Dataとの同期により表示される情報</li>
+                <li><strong>表示範囲</strong> - 年表示は無制限ですが、過去・未来の極端な年では注意</li>
+            </ul>
+        </div>
+
+        <h2>🛠️ 技術的特徴</h2>
+        
+        <div class="feature-section">
+            <h3>パフォーマンス最適化</h3>
+            <ul>
+                <li><strong>効率的な日付計算</strong> - generateMonthDays関数による最適化</li>
+                <li><strong>メモリ効率</strong> - 必要な月のみを動的計算</li>
+                <li><strong>アニメーション</strong> - withAnimationによるスムーズな移動</li>
+                <li><strong>レスポンシブ設計</strong> - デバイスサイズに応じた最適表示</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
