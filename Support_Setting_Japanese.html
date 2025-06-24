@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings 設定画面 - 操作方法 | MemoHub</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f7;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #007AFF;
+            text-align: center;
+            border-bottom: 3px solid #007AFF;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+        h2 {
+            color: #34C759;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            padding-left: 10px;
+            border-left: 4px solid #34C759;
+        }
+        h3 {
+            color: #FF9500;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        .feature-section {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 4px solid #007AFF;
+        }
+        .button-info {
+            background-color: #e3f2fd;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+            border-left: 4px solid #2196f3;
+        }
+        .warning {
+            background-color: #fff3cd;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #ffc107;
+            margin: 15px 0;
+        }
+        .success {
+            background-color: #d4edda;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #28a745;
+            margin: 15px 0;
+        }
+        .info {
+            background-color: #d1ecf1;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #17a2b8;
+            margin: 15px 0;
+        }
+        ul, ol {
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 8px;
+        }
+        .icon {
+            font-weight: bold;
+            color: #007AFF;
+        }
+        code {
+            background-color: #f1f3f4;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+        .component-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+            margin: 15px 0;
+        }
+        .component-item {
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 6px;
+            border: 1px solid #e0e0e0;
+            text-align: center;
+        }
+        .step-number {
+            background-color: #007AFF;
+            color: white;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        .back-button {
+            display: inline-block;
+            background-color: #007AFF;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-bottom: 20px;
+            transition: background-color 0.3s ease;
+        }
+        .back-button:hover {
+            background-color: #0056b3;
+        }
+        .back-button::before {
+            content: "← ";
+            margin-right: 5px;
+        }
+        .setting-section {
+            background-color: #f0f0f8;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid #9c27b0;
+        }
+        .version-info {
+            background-color: #e8f5e8;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+            border-left: 4px solid #4CAF50;
+        }
+        .alarm-management {
+            background-color: #fff5f5;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid #ff6b6b;
+        }
+        .media-limit {
+            background-color: #fff8e1;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid #ffa726;
+        }
+        .navigation-item {
+            background-color: #f9f9f9;
+            padding: 12px;
+            border-radius: 6px;
+            margin: 8px 0;
+            border-left: 3px solid #007AFF;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .navigation-item:hover {
+            background-color: #e3f2fd;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-button">メイン操作ガイドに戻る</a>
+        
+        <h1>⚙️ Settings - 設定画面</h1>
+        
+        <div class="feature-section">
+            <h2>🎯 Settingsモードの概要</h2>
+            <p>Settingsモードはアプリケーションの各種設定を管理するための画面です。バージョン情報の確認、アラーム管理、メディア制限の設定など、アプリの動作をカスタマイズできます。</p>
+        </div>
+
+        <h2>📋 画面構成</h2>
+        
+        <div class="info">
+            <h3>Formベースの設定項目</h3>
+            <ul>
+                <li><strong>Section分けされた設定項目</strong> - 機能別にグループ化</li>
+                <li><strong>NavigationLink</strong> - 各設定項目への詳細画面遷移</li>
+                <li><strong>NavigationView</strong> - iOS標準の設定画面スタイル</li>
+            </ul>
+        </div>
+
+        <h2>📱 設定セクション詳細</h2>
+        
+        <div class="version-info">
+            <h3>Version セクション</h3>
+            <div class="navigation-item">
+                <p><span class="icon">📋</span> <strong>Version & Build Number</strong></p>
+                <ul>
+                    <li>アプリのバージョン情報を表示</li>
+                    <li>ビルド番号の確認</li>
+                    <li>アプリの詳細情報が確認できます</li>
+                </ul>
+            </div>
+            
+            <div class="button-info">
+                <p><span class="step-number">1</span><strong>バージョン確認手順</strong></p>
+                <ul>
+                    <li>「Version & Build Number」をタップ</li>
+                    <li>AppVersionAndBuildNumberView画面が表示</li>
+                    <li>現在のアプリバージョンとビルド番号を確認</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="alarm-management">
+            <h3>Alarm セクション</h3>
+            <div class="navigation-item">
+                <p><span class="icon">🔔</span> <strong>All Alarm List</strong></p>
+                <ul>
+                    <li>設定済みのすべてのアラームを一覧表示</li>
+                    <li>アラームの管理と編集が可能</li>
+                    <li>通知の状態確認ができます</li>
+                </ul>
+            </div>
+            
+            <div class="button-info">
+                <p><span class="step-number">1</span><strong>アラーム管理手順</strong></p>
+                <ul>
+                    <li>「All Alarm List」をタップ</li>
+                    <li>AllAlarmListView画面が表示</li>
+                    <li>設定済みアラームの一覧表示と管理</li>
+                    <li>個別のアラーム設定の編集・削除</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="media-limit">
+            <h3>Media Limit セクション</h3>
+            <p>各メディアタイプの制限数を設定し、ストレージ使用量を管理します。</p>
+            
+            <div class="component-list">
+                <div class="component-item">
+                    <p><span class="icon">📸</span></p>
+                    <strong>Photo Limit</strong>
+                    <p>写真数制限の設定</p>
+                </div>
+                <div class="component-item">
+                    <p><span class="icon">🎥</span></p>
+                    <strong>Video Limit</strong>
+                    <p>動画数制限の設定</p>
+                </div>
+                <div class="component-item">
+                    <p><span class="icon">🎤</span></p>
+                    <strong>Audio Limit</strong>
+                    <p>音声録音数制限の設定</p>
+                </div>
+                <div class="component-item">
+                    <p><span class="icon">📍</span></p>
+                    <strong>Location Limit</strong>
+                    <p>位置情報数制限の設定</p>
+                </div>
+            </div>
+        </div>
+
+        <h2>📸 写真制限設定</h2>
+        
+        <div class="setting-section">
+            <h3>Photo Limit の詳細</h3>
+            <div class="button-info">
+                <p><span class="step-number">1</span><strong>写真制限の設定手順</strong></p>
+                <ul>
+                    <li>「Photo Limit」をタップ</li>
+                    <li>PhotoCountLimitInputView画面が表示</li>
+                    <li>1つのメモに添付できる写真の最大数を設定</li>
+                    <li>設定値は自動的に保存される</li>
+                </ul>
+            </div>
+            
+            <div class="info">
+                <p><span class="icon">💡</span> <strong>写真制限の効果</strong></p>
+                <ul>
+                    <li>メモリ使用量の最適化</li>
+                    <li>アプリの動作速度向上</li>
+                    <li>ストレージ容量の管理</li>
+                    <li>バックアップサイズの制御</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2>🎥 動画制限設定</h2>
+        
+        <div class="setting-section">
+            <h3>Video Limit の詳細</h3>
+            <div class="button-info">
+                <p><span class="step-number">1</span><strong>動画制限の設定手順</strong></p>
+                <ul>
+                    <li>「Video Limit」をタップ</li>
+                    <li>VideoCountLimitInputView画面が表示</li>
+                    <li>1つのメモに添付できる動画の最大数を設定</li>
+                    <li>大容量ファイルの管理に重要</li>
+                </ul>
+            </div>
+            
+            <div class="warning">
+                <p><span class="icon">⚠️</span> <strong>動画ファイルの注意点</strong></p>
+                <ul>
+                    <li>動画ファイルは写真より大容量</li>
+                    <li>制限値は慎重に設定してください</li>
+                    <li>デバイスの容量を考慮した設定が重要</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2>🎤 音声制限設定</h2>
+        
+        <div class="setting-section">
+            <h3>Audio Limit の詳細</h3>
+            <div class="button-info">
+                <p><span class="step-number">1</span><strong>音声制限の設定手順</strong></p>
+                <ul>
+                    <li>「Audio Limit」をタップ</li>
+                    <li>AudioCountLimitInputView画面が表示</li>
+                    <li>1つのメモに添付できる音声録音の最大数を設定</li>
+                    <li>音声ライブラリの項目上限を管理</li>
+                </ul>
+            </div>
+            
+            <div class="success">
+                <p><span class="icon">🎵</span> <strong>音声管理のメリット</strong></p>
+                <ul>
+                    <li>録音データの整理整頓</li>
+                    <li>再生パフォーマンスの向上</li>
+                    <li>音声ファイルの効率的な管理</li>
+                    <li>検索機能の最適化</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2>📍 位置情報制限設定</h2>
+        
+        <div class="setting-section">
+            <h3>Location Limit の詳細</h3>
+            <div class="button-info">
+                <p><span class="step-number">1</span><strong>位置情報制限の設定手順</strong></p>
+                <ul>
+                    <li>「Location Limit」をタップ</li>
+                    <li>LocationCountLimitInputView画面が表示</li>
+                    <li>1つのメモに登録できる位置情報の最大数を設定</li>
+                    <li>地図データの効率的な管理</li>
+                </ul>
+            </div>
+            
+            <div class="info">
+                <p><span class="icon">🗺️</span> <strong>位置情報管理の重要性</strong></p>
+                <ul>
+                    <li>地図表示の高速化</li>
+                    <li>位置データベースの最適化</li>
+                    <li>GPS精度の向上</li>
+                    <li>バッテリー消費の抑制</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2>🔧 設定画面の操作方法</h2>
+        
+        <div class="feature-section">
+            <h3>基本操作</h3>
+            <div class="button-info">
+                <p><span class="step-number">1</span><strong>設定項目の選択</strong></p>
+                <ul>
+                    <li>各セクションの項目をタップして詳細画面へ移動</li>
+                    <li>NavigationLinkによる画面遷移</li>
+                    <li>戻るボタンで前の画面に復帰</li>
+                </ul>
+            </div>
+            
+            <div class="button-info">
+                <p><span class="step-number">2</span><strong>設定値の変更</strong></p>
+                <ul>
+                    <li>各制限設定画面で数値を入力</li>
+                    <li>設定値は自動的にCore Dataに保存</li>
+                    <li>変更は即座にアプリ全体に反映</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2>💾 データ管理とセキュリティ</h2>
+        
+        <div class="feature-section">
+            <h3>設定データの管理</h3>
+            <div class="success">
+                <p><span class="icon">🔒</span> <strong>設定データの保存</strong></p>
+                <ul>
+                    <li>すべての設定はCore Dataで永続化</li>
+                    <li>アプリ再起動後も設定値を維持</li>
+                    <li>iCloudバックアップによる設定同期（対応している場合）</li>
+                    <li>設定の変更履歴管理</li>
+                </ul>
+            </div>
+            
+            <div class="info">
+                <p><span class="icon">⚙️</span> <strong>デフォルト値とリセット</strong></p>
+                <ul>
+                    <li>初期インストール時のデフォルト制限値</li>
+                    <li>不正な値が入力された場合の自動修正</li>
+                    <li>設定の整合性チェック機能</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2>🎨 設定画面の特徴</h2>
+        
+        <div class="feature-section">
+            <h3>ユーザーインターフェース</h3>
+            <ul>
+                <li><strong>iOS標準のForm UI</strong> - 馴染みやすいインターフェース</li>
+                <li><strong>Section分け</strong> - 機能別の明確なグループ化</li>
+                <li><strong>多言語対応</strong> - 日本語・中国語・英語のコメント</li>
+                <li><strong>NavigationView</strong> - 一貫したナビゲーション体験</li>
+            </ul>
+        </div>
+
+        <div class="feature-section">
+            <h3>レスポンシブデザイン</h3>
+            <ul>
+                <li><strong>DefaultNavigationViewStyle</strong> - デバイスに最適化</li>
+                <li><strong>maxWidth・maxHeight設定</strong> - 画面全体での表示</li>
+                <li><strong>動的レイアウト</strong> - 画面サイズに応じた調整</li>
+            </ul>
+        </div>
+
+        <h2>💡 効率的な設定管理のコツ</h2>
+        
+        <div class="success">
+            <h3>推奨設定</h3>
+            <ul>
+                <li><strong>写真制限</strong> - デバイス容量の10-20%程度</li>
+                <li><strong>動画制限</strong> - 写真制限の1/5程度（大容量のため）</li>
+                <li><strong>音声制限</strong> - 用途に応じて10-50個程度</li>
+                <li><strong>位置情報制限</strong> - 5-10箇所程度（地図表示の最適化）</li>
+            </ul>
+        </div>
+
+        <div class="success">
+            <h3>設定のベストプラクティス</h3>
+            <ul>
+                <li><strong>定期的な見直し</strong> - 使用状況に応じた制限値の調整</li>
+                <li><strong>バランスの取れた設定</strong> - 機能性と性能の両立</li>
+                <li><strong>段階的な調整</strong> - 急激な変更を避ける</li>
+                <li><strong>バックアップ前の確認</strong> - 重要な設定の事前確認</li>
+            </ul>
+        </div>
+
+        <h2>🔗 他画面との連携</h2>
+        
+        <div class="info">
+            <h3>設定の影響範囲</h3>
+            <ul>
+                <li><strong>New/Editモード</strong> - メディア制限による追加制御</li>
+                <li><strong>アラーム機能</strong> - 通知設定の管理</li>
+                <li><strong>データ管理</strong> - 全体的なパフォーマンス向上</li>
+                <li><strong>ストレージ効率</strong> - デバイス容量の最適化</li>
+            </ul>
+        </div>
+
+        <div class="warning">
+            <h3>⚠️ 注意事項</h3>
+            <ul>
+                <li><strong>制限値の設定</strong> - 過度に低い値は機能制限につながる</li>
+                <li><strong>既存データへの影響</strong> - 制限値変更時の既存メモへの対応</li>
+                <li><strong>同期設定</strong> - 複数デバイス使用時の設定整合性</li>
+                <li><strong>バックアップ</strong> - 重要な設定変更前のデータバックアップ</li>
+            </ul>
+        </div>
+
+        <h2>🛠️ 技術的詳細</h2>
+        
+        <div class="feature-section">
+            <h3>実装の特徴</h3>
+            <ul>
+                <li><strong>SwiftUI Form</strong> - 宣言的UIによる実装</li>
+                <li><strong>NavigationLink</strong> - 型安全な画面遷移</li>
+                <li><strong>Core Data統合</strong> - 永続化データとの連携</li>
+                <li><strong>リアルタイム更新</strong> - 設定変更の即座反映</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
